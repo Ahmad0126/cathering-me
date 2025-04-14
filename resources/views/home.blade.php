@@ -1,6 +1,6 @@
 <x-root>
     <x-layout>
-        <h1 class="mb-5">Selamat Datang {{ Auth::user()->name }}</h1>
+        <h1 class="mb-5">Selamat Datang, {{ Auth::user()->name }}</h1>
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="">Daftar Menu</h4>
@@ -15,7 +15,7 @@
                             <h4>{{ $m->nama }}</h4>
                             <p>Rp {{ number_format($m->harga) }}</p>
                             <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-warning">Detail</a>
+                                <a href="{{ route('detail', $m->id) }}" class="btn btn-warning">Detail</a>
                                 @can('customer')
                                     <a href="{{ route('pesan', $m->id) }}" class="btn btn-outline-warning">Pesan</a>
                                 @endcan

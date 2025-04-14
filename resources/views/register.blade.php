@@ -8,6 +8,10 @@
                         <form action="" method="post">
                             @csrf
                             <div class="mb-3">
+                                <label for="name">Nama</label>
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                            <div class="mb-3">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" class="form-control">
                             </div>
@@ -16,8 +20,8 @@
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label for="name">Nama</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <label for="konfirmasi">Konfirmasi Password</label>
+                                <input type="password" name="konfirmasi" id="konfirmasi" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="">Daftar sebagai</label>
@@ -33,6 +37,9 @@
                                         Merchant
                                     </label>
                                 </div>
+                            </div>
+                            <div class="mb-3">
+                                <p>Sudah punya akun? <a href="/login" class="text-warning fw-bold text-decoration-none">Login</a></p>
                             </div>
                             <div class="mb-3 d-grid">
                                 <button class="btn btn-block btn-warning" type="submit">Daftar</button>

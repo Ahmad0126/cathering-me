@@ -7,7 +7,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <form action="{{ route('menu_update') }}" method="post">
                             @csrf
                             <div class="mb-3">
@@ -23,12 +23,12 @@
                                 <label for="deskripsi">Deskripsi</label>
                                 <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control">{{ $menu->deskripsi }}</textarea>
                             </div>
-                            <div class="d-grid">
+                            <div class="d-grid mb-3">
                                 <button type="submit" class="btn btn-warning">Simpan</button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="" class="mb-3">Foto</label>
                         <div class="row">
                             @foreach ($foto as $f)
@@ -89,7 +89,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Menu</h5>
+                        <h5 class="modal-title">Tambah Kategori</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="{{ route('set_kategori') }}" method="post">

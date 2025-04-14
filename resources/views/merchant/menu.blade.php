@@ -1,13 +1,13 @@
 <x-root>
     <x-layout>
-        <div class="d-flex justify-content-between align-items-center mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="">Menu Katering</h1>
             <button class="btn btn-warning h-100" type="button" id="tambah">+ Tambah</button>
         </div>
 
         <div class="row">
             @foreach ($menu as $m)
-                <div class="col-12 col-sm-6 col-xl-3 mb-3">
+                <div class="col-12 col-sm-6 col-xl-4 col-xxl-3 mb-3">
                     <div class="card shadow">
                         <img src="{{ $m->path ? asset('storage/'.$m->path) : 'https://placehold.co/400?text=image+cap'}}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="">
                         <div class="card-body bg-dark text-white rounded-bottom">

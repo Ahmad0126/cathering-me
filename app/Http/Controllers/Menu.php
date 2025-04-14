@@ -22,6 +22,12 @@ class Menu extends Controller
         $data['kategori'] = Kategori::get_kategori_menu($id);
         return view('merchant.menu_edit', $data);
     }
+    public function detail($id){
+        $data['menu'] = ModelsMenu::get_detail_menu($id);
+        $data['foto'] = Foto::where('id_menu', $id)->get();
+        $data['kategori'] = Kategori::get_kategori_menu($id);
+        return view('detail', $data);
+    }
     public function store(Request $request){
         $request->validate([
             'nama' => 'required|string|max:255',

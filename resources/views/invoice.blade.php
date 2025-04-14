@@ -7,8 +7,9 @@
         <div class="card shadow">
             <div class="card-body">
                 <h1>{{ $user->perusahaan ?? $user->name }}</h1>
-                <p>Tanggal Transaksi: <span class="fw-bold">{{ date('j F Y', strtotime($pesanan->tanggal)) }}</span> </p>
-                <p>Status: <span class="fw-bold">{{ $pesanan->status }}</span> </p>
+                <p class="mb-0">Tanggal Transaksi: <span class="fw-bold">{{ date('j F Y', strtotime($pesanan->tanggal)) }}</span> </p>
+                <p class="mb-0">Pemesan: {!! $pesanan->perusahaan ? '<span class="fw-bold">'.$pesanan->perusahaan.'</span> ('.$pesanan->pemesan.')' : '<span class="fw-bold">'.$pesanan->pemesan.'</span>' !!}</p>
+                <p class="mb-0">Status: <span class="fw-bold">{{ $pesanan->status }}</span> </p>
                 <hr>
                 <p>Detail:</p>
                 <table class="table table-hover table-striped">

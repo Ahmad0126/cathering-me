@@ -93,7 +93,8 @@
             groupAttr: false,
         };
 
-        Fancybox.bind("[data-fancybox]", options);
+        Fancybox.bind("[data-fancybox=\"single\"]", options);
+        Fancybox.bind("[data-fancybox=\"gallery\"]");
 
         function hapus_redirect(){
             if(confirm('Yakin ingin menghapus foto ini?')){
@@ -103,6 +104,13 @@
 
         $('.hapus-btn').click(function(event){
             id_gambar = $(this).data('id')                
+        })
+        $('.foto-btn').click(function(event){
+            event.preventDefault()
+            $('#foto_menu').attr('href', $(this).attr('href'))                
+            $('#foto_menu img').attr('src', $(this).attr('href'))           
+            $('.foto-btn img').css('border', 'none')     
+            $(this).find('img').css('border', 'solid 3px')     
         })
     </script>
 </body>

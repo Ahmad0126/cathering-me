@@ -9,16 +9,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav my-3 flex-column d-lg-none">
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('home') }}">Dashboard</a>
+                    <a class="nav-link text-light" href="{{ route('home') }}">Home</a>
                 </li>
+                @can('merchant')
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ route('menu') }}">Kelola Menu</a>
+                    </li>
+                @endcan
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ route('menu') }}">Menu Katering</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Pesanan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Invoice</a>
+                    <a class="nav-link text-light" href="{{ route('pesanan') }}">Pesanan</a>
                 </li>
             </ul>
             <form class="d-flex mb-3 mb-lg-0" role="search">
@@ -53,7 +52,7 @@
                     <span class="text-secondary">MENU</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('home') }}">Dashboard</a>
+                    <a class="nav-link text-dark" href="{{ route('home') }}">Home</a>
                 </li>
                 @can('merchant')
                     <li class="nav-item">

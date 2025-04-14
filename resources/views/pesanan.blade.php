@@ -1,7 +1,7 @@
 <x-root>
     <x-layout>
-        <h4 class="mb-3">Riwayat Pesanan</h4>
-        <div class="card shadow mt-5">
+        <h1 class="mb-4">Riwayat Pesanan</h1>
+        <div class="card shadow">
             <div class="card-body">
                 <table class="table table-hover table-striped">
                     <thead>
@@ -31,10 +31,10 @@
                                     @endcan
                                     @can('merchant')
                                         @if ($p->status == 'Diminta')
-                                            <a href="{{ route('proses_pesanan', $p->id) }}" class="btn btn-warning">Proses</a>
+                                            <a href="{{ route('proses_pesanan', $p->id) }}" class="btn btn-warning"  onclick="return confirm('Proses Pesanan ini?')">Proses</a>
                                         @endif
                                         @if ($p->status == 'Diproses')
-                                            <a href="{{ route('selesai_pesanan', $p->id) }}" class="btn btn-warning">Selesai</a>
+                                            <a href="{{ route('selesai_pesanan', $p->id) }}" class="btn btn-success"  onclick="return confirm('Tandai selesai Pesanan ini?')">Selesaikan</a>
                                         @endif
                                     @endcan
                                 </td>

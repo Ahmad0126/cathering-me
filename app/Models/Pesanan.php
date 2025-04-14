@@ -18,8 +18,9 @@ class Pesanan extends Model
     }
     public static function get_detail_pesanan($id){
         return DB::table('pesanan')
-            ->selectRaw('menu.nama as menu, menu.harga, pesanan.tanggal, pesanan.*')
+            ->selectRaw('menu.nama as menu, menu.harga, pesanan.tanggal, pesanan.*, users.name as pemesan, users.perusahaan')
             ->join('menu', 'menu.id', '=', 'pesanan.id_menu')
+            ->join('users', 'users.id', '=', 'pesanan.id_user')
             ->where('pesanan.id', $id)->first();
     }
     public static function get_pesanan_merchant($id){

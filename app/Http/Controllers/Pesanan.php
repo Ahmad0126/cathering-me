@@ -51,6 +51,28 @@ class Pesanan extends Controller
 
         return redirect(route('pesanan'))->with('alert', 'Pemesanan berhasil');
     }
+    public function proses($id){
+        try{
+            $pesanan = ModelsPesanan::find($id);
+            $pesanan->status = 'Diproses';
+            $pesanan->save();
+        } catch (\Throwable $th) {
+            return redirect(route('pesanan'))->withErrors('Update gagal: '.$th->getMessage());
+        }
+
+        return redirect(route('pesanan'))->with('alert', 'Update berhasil');
+    }
+    public function selesai($id){
+        try{
+            $pesanan = ModelsPesanan::find($id);
+            $pesanan->status = 'Selesai';
+            $pesanan->save();
+        } catch (\Throwable $th) {
+            return redirect(route('pesanan'))->withErrors('Update gagal: '.$th->getMessage());
+        }
+
+        return redirect(route('pesanan'))->with('alert', 'Update berhasil');
+    }
     public function hapus($id){
         ModelsPesanan::destroy($id);
         return redirect(route('pesanan'))->with('alert', 'Pembatalan berhasil');

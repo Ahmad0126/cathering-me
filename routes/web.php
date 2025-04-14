@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function(){
     
     Route::get('pesanan/', [Pesanan::class, 'index'])->name('pesanan');
     Route::get('pesanan/invoice/{id}', [Pesanan::class, 'invoice'])->name('invoice');
+
+    Route::get('menu/{id}', [Menu::class, 'detail'])->name('detail');
     
     Route::post('logout', [User::class, 'logout'])->name('logout');
 });

@@ -13,7 +13,7 @@
                             <div class="mb-3">
                                 <div class="row">
                                     <div class="col-4">
-                                        <a href="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://placehold.co/400?text=profile' }}" data-fancybox="single">
+                                        <a href="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://placehold.co/400?text=profile' }}" data-fancybox="gallery">
                                             <img src="{{ $user->foto ? asset('storage/'.$user->foto) : 'https://placehold.co/400?text=profile' }}" class="img-fluid" alt="">
                                         </a>
                                     </div>
