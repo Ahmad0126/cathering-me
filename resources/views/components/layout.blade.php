@@ -20,12 +20,12 @@
                     <a class="nav-link text-light" href="{{ route('pesanan') }}">Pesanan</a>
                 </li>
             </ul>
-            <form class="d-flex mb-3 mb-lg-0" role="search">
-                <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex mb-3 mb-lg-0" role="search" action="{{ route('filter') }}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" name="key" aria-label="Search">
                 <button class="btn btn-outline-warning" type="submit">Search</button>
             </form>
         </div>
-        <div class="dropdown text-end">
+        <div class="dropdown text-end ms-auto">
             <a href="#" class="d-block link-body-emphasis text-decoration-none text-white dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
                 <img src="{{ Auth::user()->foto ? asset('storage/'.Auth::user()->foto) : 'https://placehold.co/40?text=PP' }}" alt="mdo" width="32" height="32" class="rounded-circle">
                 {{ Auth::user()->name }}
@@ -37,7 +37,7 @@
                 <li>
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button type="submit" class="dropdown-item">Log out</button>
+                        <button type="submit" class="dropdown-item" onclick="return confirm('Yakin ingin logout?')">Log out</button>
                     </form>
                 </li>
             </ul>

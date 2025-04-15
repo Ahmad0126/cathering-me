@@ -1,4 +1,5 @@
 <x-root>
+    <x-slot:title>Daftar | KateringME</x-slot:title>
     <div class="container">
         <div class="row full align-items-center justify-content-center">
             <div class="col-4">

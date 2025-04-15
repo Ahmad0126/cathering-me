@@ -13,16 +13,19 @@ use Illuminate\Support\Facades\Storage;
 class Menu extends Controller
 {
     public function index(){
+        $data['title'] = 'Kelola Menu';
         $data['menu'] = ModelsMenu::get_private_menu(Auth::id());
         return view('merchant.menu', $data);
     }
     public function edit($id){
+        $data['title'] = 'Edit Menu';
         $data['menu'] = ModelsMenu::find($id);
         $data['foto'] = Foto::where('id_menu', $id)->get();
         $data['kategori'] = Kategori::get_kategori_menu($id);
         return view('merchant.menu_edit', $data);
     }
     public function detail($id){
+        $data['title'] = 'Detail Menu';
         $data['menu'] = ModelsMenu::get_detail_menu($id);
         $data['foto'] = Foto::where('id_menu', $id)->get();
         $data['kategori'] = Kategori::get_kategori_menu($id);

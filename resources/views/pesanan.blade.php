@@ -1,4 +1,5 @@
 <x-root>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <x-layout>
         <h1 class="mb-4">Riwayat Pesanan</h1>
         <div class="card shadow">

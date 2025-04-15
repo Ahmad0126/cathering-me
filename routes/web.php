@@ -9,7 +9,6 @@ use App\Http\Controllers\Pesanan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function(){
-    
     Route::get('/register', function () {
         return view('register');
     });
@@ -52,6 +51,7 @@ Route::middleware('auth')->group(function(){
     Route::get('pesanan/', [Pesanan::class, 'index'])->name('pesanan');
     Route::get('pesanan/invoice/{id}', [Pesanan::class, 'invoice'])->name('invoice');
 
+    Route::get('menu/filter', [Home::class, 'filter'])->name('filter');
     Route::get('menu/{id}', [Menu::class, 'detail'])->name('detail');
     
     Route::post('logout', [User::class, 'logout'])->name('logout');

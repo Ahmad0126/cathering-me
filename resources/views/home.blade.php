@@ -1,4 +1,5 @@
 <x-root>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <x-layout>
         <h1 class="mb-5">Selamat Datang, {{ Auth::user()->name }}</h1>
 
@@ -7,13 +8,25 @@
             <button class="btn btn-warning h-100" type="button" id="tambah">Filter</button>
         </div>
         <div class="row">
-            @foreach ($menu as $m)
-                <div class="col-12 col-sm-6 col-xl-3 mb-3">
+            @foreach ($menu as $i => $m)
+                <div class="col-12 col-sm-6 col-xl-4 col-xxl-3 mb-3">
                     <div class="card shadow">
                         <img src="{{ $m->path ? asset('storage/'.$m->path) : 'https://placehold.co/400?text=image+cap'}}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="">
                         <div class="card-body bg-dark text-white rounded-bottom">
                             <h4>{{ $m->nama }}</h4>
+                            @foreach ($kate[$i] as $k)
+                                <span class="badge text-bg-warning">{{ $k->kategori }}</span>
+                            @endforeach
                             <p>Rp {{ number_format($m->harga) }}</p>
+                            <div class="d-flex my-3">
+                                <div>
+                                    <img src="{{ $m->foto ? asset('storage/'.$m->foto) : 'https://placehold.co/40?text=PP'}}" alt="" class="rounded-circle" style="width: 50px">
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-0">{{ $m->perusahaan ?? $m->name }}</h5>
+                                    <p class="mb-0">{{ $m->perusahaan ? $m->name : '' }}</p>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-between">
                                 <a href="{{ route('detail', $m->id) }}" class="btn btn-warning">Detail</a>
                                 @can('customer')
@@ -32,9 +45,8 @@
                         <h5 class="modal-title">Filter Menu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="post">
+                    <form action="{{ route('filter') }}" method="get">
                         <div class="modal-body">
-                            @csrf
                             <div class="mb-3">
                                 <a class="d-block link-body-emphasis text-decoration-none text-dark" data-bs-toggle="collapse" href="#kategori" role="button">
                                     Kategori +
@@ -42,7 +54,7 @@
                                 <div class="collapse" id="kategori">
                                     @foreach ($kategori as $k)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="role" value="{{ $k->id }}" id="kategori{{ $k->id }}">
+                                            <input class="form-check-input" type="checkbox" name="kategori[]" value="{{ $k->id }}" id="kategori{{ $k->id }}">
                                             <label class="form-check-label" for="kategori{{ $k->id }}">
                                                 {{ $k->kategori }}
                                             </label>

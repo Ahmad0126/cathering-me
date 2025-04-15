@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class User extends Controller
 {
     public function profil(){
+        $data['title'] = 'Profil Anda';
         $data['user'] = UserModel::find(Auth::id());
         return view('profile', $data);
     }

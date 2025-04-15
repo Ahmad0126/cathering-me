@@ -1,4 +1,5 @@
 <x-root>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <x-layout>
         <div class="d-flex justify-content-between align-items-center mb-5">
             <h1 class="">Edit Menu</h1>

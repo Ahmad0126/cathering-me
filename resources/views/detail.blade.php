@@ -1,4 +1,5 @@
 <x-root>
+    <x-slot:title>{{ $title }}</x-slot:title>
     <x-layout>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="">Detail Menu</h1>
@@ -25,7 +26,7 @@
                     <div class="col ms-md-4">
                         <h1>{{ $menu->nama }}</h1>
                         <h4>Rp {{ number_format($menu->harga) }}</h4>
-                        <p class="mt-4 mb-2">Kategori:</p>
+                        <p class="mt-4 mb-2 fw-bold">Kategori:</p>
                         @foreach ($kategori as $k)
                             <span class="badge text-bg-warning">{{ $k->kategori }}</span>
                         @endforeach
@@ -38,7 +39,7 @@
                                 <p class="mb-0">{{ $menu->perusahaan ? $menu->name : '' }}</p>
                             </div>
                         </div>
-                        <p>Alamat: {{ $menu->alamat }}</p>
+                        <p><span class="fw-bold">Alamat:</span> {{ $menu->alamat }}</p>
                         <hr>
                         <p>{!! nl2br($menu->deskripsi) !!}</p>
                         @can('customer')

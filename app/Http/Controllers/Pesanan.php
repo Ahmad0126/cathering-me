@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class Pesanan extends Controller
 {
     public function index(){
+        $data['title'] = 'Riwayat Pesanan';
         if(Auth::user()->role === 'Merchant'){
             $data['pesanan'] = ModelsPesanan::get_pesanan_merchant(Auth::id());
         }else{
@@ -19,10 +20,12 @@ class Pesanan extends Controller
         return view('pesanan', $data);
     }
     public function pesan($id){
+        $data['title'] = 'Pesan Menu';
         $data['menu'] = Menu::find($id);
         return view('customer.pesan', $data);
     }
     public function invoice($id){
+        $data['title'] = 'Invoice Pesanan';
         $data['pesanan'] = ModelsPesanan::get_detail_pesanan($id);
         $menu = Menu::find($data['pesanan']->id_menu);
         $data['user'] = User::find($menu->id_user);
