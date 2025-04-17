@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [Home::class, 'index'])->name('home');
     Route::get('/profil', [User::class, 'profil'])->name('profil');
     Route::post('/profil/update', [User::class, 'update'])->name('user_update');
+    Route::get('/profil/password', function () {
+        return view('password_reset');
+    })->name('password');
+    Route::post('/profil/password', [User::class, 'reset'])->name('reset_password');
 
     Route::middleware('can:merchant')->group(function(){
         Route::get('merchant/menu', [Menu::class, 'index'])->name('menu');

@@ -32,7 +32,7 @@
             </a>
             <ul class="dropdown-menu text-small" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 34px);">
                 <li><a class="dropdown-item" href="{{ route('profil') }}">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Reset Password</a></li>
+                <li><a class="dropdown-item" href="{{ route('reset_password') }}">Reset Password</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
                     <form action="{{ route('logout') }}" method="post">

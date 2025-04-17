@@ -1,8 +1,8 @@
 <x-root>
     <x-slot:title>Daftar | KateringME</x-slot:title>
-    <div class="container">
+    <div class="full">
         <div class="row full align-items-center justify-content-center">
-            <div class="col-4">
+            <div class="col-11 col-xxl-3 col-xl-4 col-md-6">
                 <div class="card shadow">
                     <div class="card-body bg-dark text-light rounded">
                         <h3 class="text-warning text-center mb-5">Register</h3>
@@ -10,15 +10,15 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="name">Nama</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
                             </div>
                             <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
                             </div>
                             <div class="mb-3">
                                 <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control" value="{{ old('password') }}">
                             </div>
                             <div class="mb-3">
                                 <label for="konfirmasi">Konfirmasi Password</label>
@@ -27,13 +27,13 @@
                             <div class="mb-3">
                                 <label for="">Daftar sebagai</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" value="Customer" id="customer">
+                                    <input class="form-check-input" type="radio" name="role" value="Customer" id="customer" @checked(old('role') == 'Customer')>
                                     <label class="form-check-label" for="customer">
                                         Customer
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" value="Merchant" id="merchant">
+                                    <input class="form-check-input" type="radio" name="role" value="Merchant" id="merchant" @checked(old('role') == 'Merchant')>
                                     <label class="form-check-label" for="merchant">
                                         Merchant
                                     </label>

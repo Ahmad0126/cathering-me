@@ -44,11 +44,26 @@ class User extends Controller
 
         return redirect()->back()->with('alert', 'Update profil berhasil');
     }
+    public function reset(Request $request){
+        $request->validate([
+            'password' => 'required|min:4|confirmed:konfirmasi',
+        ]);
+
+        try {
+            $user = UserModel::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+        } catch (\Throwable $th) {
+            return redirect(route('home'))->withErrors('Reset password gagal: '.$th->getMessage());
+        }
+
+        return redirect(route('home'))->with('alert', 'Reset password berhasil');
+    }
     public function register(Request $request){
         $request->validate([
             'name' => 'required|string|max:60',
-            'email' => 'required|email',
-            'password' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:4|confirmed:konfirmasi',
             'role' => 'required|string',
         ]);
 
